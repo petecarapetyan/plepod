@@ -5,6 +5,7 @@ type ContentType = string | string[] | { [index: string]: string };
 interface AddPluginParams {
   placement: string;
   content: ContentType;
+  viewName: string;
 }
 export type AddPluginConfig = string | AddPluginParams;
 
@@ -15,6 +16,9 @@ const asFileString = (content: ContentType) => {
 
 export const plugin: PluginFunction<AddPluginConfig> = async (schema: GraphQLSchema, documents: Types.DocumentFile[], config: AddPluginConfig): Promise<Types.PluginOutput> => {
   // Will always be object if specified as array or object
+  console.log("\n\nCONFIG ", JSON.stringify(config));
+  console.log("\n\nSCHEMA ", JSON.stringify(schema));
+  console.log("\n\nDOCUMENTS ", JSON.stringify(documents));
   if (typeof config !== 'object') {
     return { content: null, prepend: asFileString(config) };
   }
