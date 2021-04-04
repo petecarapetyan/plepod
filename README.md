@@ -1,2 +1,3 @@
 # plepod
-graphql-code-generator plugin for lit-element based PWA
+
+This project is inactive and should not be used
